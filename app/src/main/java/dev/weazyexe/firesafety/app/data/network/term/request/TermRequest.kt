@@ -13,5 +13,8 @@ data class TermRequest(
     val definition: String,
 
     @SerializedName("link")
-    val link: String
+    val link: String,
+
+    @SerializedName("token")
+    val token: String
 )

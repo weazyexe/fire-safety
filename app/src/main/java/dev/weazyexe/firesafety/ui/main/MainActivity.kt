@@ -14,5 +14,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel = useViewModel(this, MainViewModel::class.java)
+        bind()
+    }
+
+    private fun bind() {
+
     }
 }

@@ -1,5 +1,6 @@
 package dev.weazyexe.firesafety.utils.extensions
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
@@ -19,4 +20,9 @@ fun <T> ViewModel.subscribe(
 
 fun <T : ViewModel> ViewModelStoreOwner.useViewModel(owner: ViewModelStoreOwner, vmClass: Class<T>): T {
     return ViewModelProvider(owner, ViewModelProvider.NewInstanceFactory()).get(vmClass)
+}
+
+fun <T> MutableLiveData<T>.default(value: T): MutableLiveData<T> {
+    postValue(value)
+    return this
 }

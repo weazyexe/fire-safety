@@ -29,6 +29,7 @@ class TermsInteractor @Inject constructor(
     /**
      * Создание термина в сети
      */
+    @Deprecated("Sorry, but you can not using it without auth token")
     fun createTerm(title: String, definition: String, link: String): Completable =
         termsRepository.createTerm(title, definition, link)
 }

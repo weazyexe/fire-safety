@@ -8,6 +8,7 @@ import javax.inject.Inject
 /**
  * Интерактор для переноса данных CSV на сервер
  */
+@Deprecated("Sorry, but you can not using it without auth token")
 class ParserInteractor @Inject constructor(
     private val termsInteractor: TermsInteractor
 ) {

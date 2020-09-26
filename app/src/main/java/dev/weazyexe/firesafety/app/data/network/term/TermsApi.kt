@@ -29,6 +29,7 @@ interface TermsApi {
     /**
      * Создание термина
      */
+    @Deprecated("Sorry, but you can not using it without auth token")
     @POST("definitions")
     fun createTerm(@Body request: TermRequest): Completable
 }

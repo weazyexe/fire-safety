@@ -1,7 +1,7 @@
 package dev.weazyexe.firesafety.domain
 
-data class Definition(
-    val id: String,
+data class Term(
+    val id: Int,
     val title: String,
     val definition: String,
     val link: String,

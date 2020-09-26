@@ -1,4 +1,4 @@
-package dev.weazyexe.firesafety.utils
+package dev.weazyexe.firesafety.utils.extensions
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

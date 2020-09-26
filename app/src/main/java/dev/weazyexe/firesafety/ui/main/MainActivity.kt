@@ -3,7 +3,7 @@ package dev.weazyexe.firesafety.ui.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dev.weazyexe.firesafety.R
-import dev.weazyexe.firesafety.utils.useViewModel
+import dev.weazyexe.firesafety.utils.extensions.useViewModel
 
 class MainActivity : AppCompatActivity() {
 

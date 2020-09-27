@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">firesafety</string>
+    <string name="main_terms">Термины</string>
+    <string name="main_favorites">Избранное</string>
+    <string name="main_library">Литература</string>
+    <string name="main_settings">Настройки</string>
 </resources>

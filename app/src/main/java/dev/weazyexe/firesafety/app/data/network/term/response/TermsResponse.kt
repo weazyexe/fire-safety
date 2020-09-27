@@ -32,8 +32,12 @@ data class TermObj(
  * Респонс на GET запрос /definitions
  */
 data class TermsResponse(
+    @SerializedName("results")
     val items: List<TermObj>,
+
+    @SerializedName("metadata")
     val metadata: MetadataObj
+
 ) : Transformable<DataList<Term>> {
     override fun transform(): DataList<Term> {
         return DataList(

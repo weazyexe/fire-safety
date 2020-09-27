@@ -1,4 +1,4 @@
-package dev.weazyexe.firesafety.utils
+package dev.weazyexe.firesafety.ui.base
 
 import android.os.Build
 import android.view.View
@@ -9,7 +9,17 @@ import androidx.core.view.updatePadding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.weazyexe.firesafety.utils.extensions.updateMargin
 
+/**
+ * Объект, обрабатывающий инсеты сверху и снизу
+ */
 object InsetsHelper {
+
+    /**
+     * Обработка нижних инсетов
+     *
+     * @param isPadding обработать отступ через padding (true) или margin (false)
+     * @param views список [View], для которых применить отступы
+     */
     fun handleBottom(isPadding: Boolean, vararg views: View) {
         views.forEach { view ->
             val distance = if (isPadding) view.paddingBottom else view.marginBottom
@@ -32,6 +42,12 @@ object InsetsHelper {
         }
     }
 
+    /**
+     * Обработка верхних инсетов
+     *
+     * @param isPadding обработать отступ через padding (true) или margin (false)
+     * @param views список [View], для которых применить отступы
+     */
     fun handleTop(isPadding: Boolean, vararg views: View) {
         views.forEach { view ->
             val distance = if (isPadding) view.paddingTop else view.marginTop

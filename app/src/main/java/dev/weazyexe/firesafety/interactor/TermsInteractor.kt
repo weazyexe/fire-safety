@@ -20,10 +20,10 @@ class TermsInteractor @Inject constructor(
      * Получение терминов из репозитория
      */
     fun getTerms(
-        search: String = "",
-        limit: Int = DEFAULT_LIMIT,
-        offset: Int = DEFAULT_OFFSET,
-        forceNetwork: Boolean = false
+        search: String,
+        limit: Int,
+        offset: Int,
+        forceNetwork: Boolean
     ): Observable<DataList<Term>> = termsRepository.getTerms(search, limit, offset, forceNetwork)
 
     /**

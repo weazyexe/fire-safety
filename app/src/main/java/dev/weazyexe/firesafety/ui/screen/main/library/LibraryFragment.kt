@@ -1,4 +1,4 @@
-package dev.weazyexe.firesafety.ui.favorite
+package dev.weazyexe.firesafety.ui.screen.main.library
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dev.weazyexe.firesafety.R
 
-class FavoriteFragment : Fragment() {
+class LibraryFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_favorites, container, false)
+        return inflater.inflate(R.layout.fragment_library, container, false)
     }
 }

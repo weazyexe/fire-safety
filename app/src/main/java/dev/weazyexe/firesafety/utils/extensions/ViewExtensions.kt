@@ -7,6 +7,9 @@ import androidx.core.view.marginLeft
 import androidx.core.view.marginRight
 import androidx.core.view.marginTop
 
+/**
+ * Обновить отступы у [View]
+ */
 fun View.updateMargin(left: Int? = null, right: Int? = null, top: Int? = null, bottom: Int? = null) {
     val params = layoutParams
     if (params is ViewGroup.MarginLayoutParams) {

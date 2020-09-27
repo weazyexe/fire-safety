@@ -1,4 +1,4 @@
-package dev.weazyexe.firesafety.ui.main
+package dev.weazyexe.firesafety.ui.screen.main
 
 import android.os.Build
 import android.os.Bundle
@@ -7,19 +7,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.weazyexe.firesafety.R
-import dev.weazyexe.firesafety.ui.content.ContentFragment
-import dev.weazyexe.firesafety.ui.favorite.FavoriteFragment
-import dev.weazyexe.firesafety.ui.library.LibraryFragment
-import dev.weazyexe.firesafety.ui.settings.SettingsFragment
-import dev.weazyexe.firesafety.utils.InsetsHelper
+import dev.weazyexe.firesafety.ui.screen.main.terms.TermsFragment
+import dev.weazyexe.firesafety.ui.screen.main.favorite.FavoriteFragment
+import dev.weazyexe.firesafety.ui.screen.main.library.LibraryFragment
+import dev.weazyexe.firesafety.ui.screen.main.settings.SettingsFragment
+import dev.weazyexe.firesafety.ui.base.InsetsHelper
 import dev.weazyexe.firesafety.utils.extensions.useViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * Главный экран приложения
+ */
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
-
-    private lateinit var contentFragment: ContentFragment
+    private lateinit var contentFragment: TermsFragment
     private lateinit var favoriteFragment: FavoriteFragment
     private lateinit var libraryFragment: LibraryFragment
     private lateinit var settingsFragment: SettingsFragment
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
     private var newPosition = 0
     private var startingPosition = 0
 
+    /**
+     * Обработчик нажатий на табы [BottomNavigationView]
+     */
     private val onNavigationItemReselectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -68,13 +72,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupInsets()
 
-        viewModel = useViewModel(this, MainViewModel::class.java)
+        setupInsets()
         loadFragments()
         bind()
     }
 
+    /**
+     * Настройка инсетов для новых версий Android шобы по красоте
+     */
     private fun setupInsets() {
         if (Build.VERSION.SDK_INT >= 27) {
             main_root_view.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
@@ -83,14 +89,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun bind() {
-        main_bottom_navigation.setOnNavigationItemSelectedListener(
-            onNavigationItemReselectedListener
-        )
-    }
-
+    /**
+     * Инициализация фрагментов
+     */
     private fun loadFragments() {
-        contentFragment = ContentFragment()
+        contentFragment = TermsFragment()
         favoriteFragment = FavoriteFragment()
         libraryFragment = LibraryFragment()
         settingsFragment = SettingsFragment()
@@ -114,6 +117,19 @@ class MainActivity : AppCompatActivity() {
         active = contentFragment
     }
 
+    /**
+     * Биндинг всех событий view
+     */
+    private fun bind() {
+        main_bottom_navigation.setOnNavigationItemSelectedListener(
+            onNavigationItemReselectedListener
+        )
+    }
+
+    /**
+     * Изменить отображаемый фрагмент на другой
+     * @param fragment фрагмент, который отобразится
+     */
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().show(fragment).hide(active).commit()
         startingPosition = newPosition

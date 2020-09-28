@@ -11,6 +11,7 @@ import dev.weazyexe.firesafety.utils.extensions.default
 import dev.weazyexe.firesafety.utils.extensions.getState
 import dev.weazyexe.firesafety.utils.extensions.mergeIfNeed
 import dev.weazyexe.firesafety.utils.extensions.subscribe
+import kotlinx.android.synthetic.main.toolbar_terms.*
 import ru.surfstudio.android.datalistlimitoffset.domain.datalist.DataList
 import ru.surfstudio.android.easyadapter.pagination.PaginationState
 import javax.inject.Inject
@@ -45,7 +46,10 @@ class TermsViewModel : ViewModel() {
     /**
      * Загрузка следующей порции терминов
      */
-    fun loadMore() = loadTerms(offset = terms.value?.nextOffset ?: DEFAULT_OFFSET)
+    fun loadMore(search: String = "") = loadTerms(
+        search = search,
+        offset = terms.value?.nextOffset ?: DEFAULT_OFFSET
+    )
 
     /**
      * При нажатии на айтем в списке

@@ -8,7 +8,7 @@ import ru.surfstudio.android.easyadapter.pagination.PaginationState
  * Сливать не требуется в случае, если имеющийся список пуст
  */
 fun <T> DataList<T>?.mergeIfNeed(list: DataList<T>): DataList<T>? {
-    return if (this?.isEmpty() == true) this else this?.merge(list)
+    return if (this?.isEmpty() == true) list else this?.merge(list)
 }
 
 /**

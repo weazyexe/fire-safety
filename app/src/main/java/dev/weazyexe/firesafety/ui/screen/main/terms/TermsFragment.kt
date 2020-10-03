@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.weazyexe.firesafety.R
 import dev.weazyexe.firesafety.ui.base.PaginationableAdapter
-import dev.weazyexe.firesafety.utils.ToolbarConfig
 import dev.weazyexe.firesafety.utils.extensions.useViewModel
 import kotlinx.android.synthetic.main.fragment_terms.*
 import kotlinx.android.synthetic.main.toolbar_terms.*
@@ -62,35 +60,14 @@ class TermsFragment : Fragment() {
             )
         )
 
-        terms_toolbar_search_open_btn.setOnClickListener {
-            terms_toolbar_close_search_layout.visibility = View.GONE
-            terms_toolbar_search_layout.visibility = View.VISIBLE
-        }
-
+        // TODO: можно добавить крестик для стирания текста
         terms_search_et.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                search()
+                KeyboardUtil.hideSoftKeyboard(requireActivity())
+                viewModel.search(terms_search_et.text.toString())
             }
             true
         }
-
-        terms_clear_search_btn.setOnClickListener {
-            if (terms_search_et.text.isNotEmpty()) {
-                terms_search_et.setText("")
-                search()
-            } else {
-                terms_toolbar_close_search_layout.visibility = View.VISIBLE
-                terms_toolbar_search_layout.visibility = View.GONE
-            }
-        }
-
-        // TODO: сделать шобы тулбар тайтл показывался
-        // TODO: чтобы при поиске клавиатура скрывалась
-        ToolbarConfig.builder(requireActivity() as AppCompatActivity)
-            .fromId(R.id.terms_toolbar)
-            .setTitleText(getString(R.string.main_terms))
-            .setDisplayShowTitleEnabled(true)
-            .apply()
 
         viewModel.paginationState.observe(this) {
             adapter.setState(it)
@@ -109,10 +86,5 @@ class TermsFragment : Fragment() {
                 terms_list_rv.scrollToPosition(0)
             }
         }
-    }
-
-    private fun search() {
-        viewModel.terms.value?.clear()
-        viewModel.loadTerms(terms_search_et.text.toString())
     }
 }

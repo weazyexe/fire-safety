@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dev.weazyexe.firesafety.R
 import dev.weazyexe.firesafety.domain.Term
+import dev.weazyexe.firesafety.ui.base.CustomTabsHelper
 import dev.weazyexe.firesafety.utils.TERM_KEY
 import dev.weazyexe.firesafety.utils.ToolbarConfig
 import kotlinx.android.synthetic.main.activity_term.*
@@ -33,6 +34,10 @@ class TermActivity : AppCompatActivity() {
                     R.string.add_to_favorites
                 }
             )
+
+            term_link_tv.setOnClickListener {
+                CustomTabsHelper.openLink(this, "http://docs.cntd.ru/document/902192610")
+            }
         }
     }
 }

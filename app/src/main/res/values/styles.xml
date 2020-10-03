@@ -8,4 +8,13 @@
         <item name="titleTextColor">@android:color/black</item>
     </style>
 
+    <style name="Button" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">?android:attr/colorPrimary</item>
+    </style>
+
+    <style name="Button.Filled">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="backgroundTint">?android:attr/colorPrimary</item>
+    </style>
+
 </resources>

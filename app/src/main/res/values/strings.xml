@@ -13,4 +13,8 @@
     <string name="tools_term_link">п. 3.1 СП 60.13330.2012[16]</string>
     <string name="pagination_try_again">Повторить</string>
     <string name="toolbar_search">Поиск</string>
+
+    <string name="term">Определение</string>
+    <string name="add_to_favorites">Добавить в избранное</string>
+    <string name="remove_from_favorites">Убрать из избранного</string>
 </resources>

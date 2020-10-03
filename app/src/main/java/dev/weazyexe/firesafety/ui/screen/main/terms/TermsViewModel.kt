@@ -57,11 +57,4 @@ class TermsViewModel : ViewModel() {
         terms.value?.clear()
         loadTerms(query)
     }
-
-    /**
-     * При нажатии на айтем в списке
-     */
-    fun onTermClick(term: Term) {
-        // TODO
-    }
 }

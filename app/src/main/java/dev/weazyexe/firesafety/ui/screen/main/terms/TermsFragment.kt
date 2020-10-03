@@ -16,7 +16,7 @@ import dev.weazyexe.firesafety.ui.screen.term.TermActivity
 import dev.weazyexe.firesafety.utils.TERM_KEY
 import dev.weazyexe.firesafety.utils.extensions.useViewModel
 import kotlinx.android.synthetic.main.fragment_terms.*
-import kotlinx.android.synthetic.main.toolbar_terms.*
+import kotlinx.android.synthetic.main.toolbar_main.*
 import ru.surfstudio.android.easyadapter.ItemList
 import ru.surfstudio.android.easyadapter.pagination.PaginationState
 import ru.surfstudio.android.utilktx.util.KeyboardUtil
@@ -32,7 +32,7 @@ class TermsFragment : Fragment() {
     }
 
     private val adapter = PaginationableAdapter {
-        viewModel.loadMore(terms_search_et.text.toString())
+        viewModel.loadMore(main_search_et.text.toString())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,10 +65,10 @@ class TermsFragment : Fragment() {
         )
 
         // TODO: можно добавить крестик для стирания текста
-        terms_search_et.setOnEditorActionListener { _, actionId, _ ->
+        main_search_et.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 KeyboardUtil.hideSoftKeyboard(requireActivity())
-                viewModel.search(terms_search_et.text.toString())
+                viewModel.search(main_search_et.text.toString())
             }
             true
         }

@@ -16,10 +16,13 @@ class DocumentsRepository @Inject constructor(
     private val documentDao: DocumentDao
 ) {
 
+    private var totalCount = 0    // размер коллекции документов
+
     /**
      * Получение размера БД
      */
-    fun getDocumentsSize(): Observable<Int> = RxJavaBridge.toV3Observable(documentDao.getSize())
+    fun getDocumentsSize(): Observable<Int> =
+        RxJavaBridge.toV3Observable(documentDao.getSize().doOnNext { totalCount = it })
 
     /**
      * Получение документов из БД
@@ -33,7 +36,7 @@ class DocumentsRepository @Inject constructor(
     ): Observable<DataList<Document>> =
         RxJavaBridge.toV3Observable(
             documentDao.get("%$search%", limit, offset)
-                .map { DataList(it.transform(), limit, offset) }
+                .map { DataList(it.transform(), limit, offset, totalCount) }
         )
 
     /**

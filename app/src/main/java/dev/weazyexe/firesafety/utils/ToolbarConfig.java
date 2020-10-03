@@ -30,7 +30,7 @@ public class ToolbarConfig {
 
     private
     @IdRes
-    int toolbarId = R.id.terms_toolbar;
+    int toolbarId = R.id.main_search_toolbar;
 
     private boolean showHomeAsUp;
 

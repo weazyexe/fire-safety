@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dev.weazyexe.firesafety.R
 import dev.weazyexe.firesafety.domain.Document
 import dev.weazyexe.firesafety.ui.base.CustomTabsHelper
+import dev.weazyexe.firesafety.ui.base.InsetsHelper
 import dev.weazyexe.firesafety.ui.base.PaginationableAdapter
 import dev.weazyexe.firesafety.utils.extensions.useViewModel
 import kotlinx.android.synthetic.main.fragment_library.*
@@ -51,6 +52,9 @@ class LibraryFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        InsetsHelper.handleTop(false, main_search_toolbar)
+
         bind()
     }
 

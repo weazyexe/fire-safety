@@ -50,15 +50,16 @@ object InsetsHelper {
      */
     fun handleTop(isPadding: Boolean, vararg views: View) {
         views.forEach { view ->
-            val distance = if (isPadding) view.paddingTop else view.marginTop
+            // FIXME: временный фикс проблемы с инсетами, потом вернуть distance в updatePadding и updateMargin
+            //val distance = if (isPadding) view.paddingTop else view.marginTop
             ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
                 if (isPadding) {
                     v.updatePadding(
-                        top = distance + insets.systemWindowInsetTop
+                        top = insets.systemWindowInsetTop
                     )
                 } else {
                     v.updateMargin(
-                        top = distance + insets.systemWindowInsetTop
+                        top = insets.systemWindowInsetTop
                     )
                 }
 

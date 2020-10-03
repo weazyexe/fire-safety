@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.weazyexe.firesafety.R
 import dev.weazyexe.firesafety.domain.Term
+import dev.weazyexe.firesafety.ui.base.InsetsHelper
 import dev.weazyexe.firesafety.ui.base.PaginationableAdapter
 import dev.weazyexe.firesafety.ui.screen.term.TermActivity
 import dev.weazyexe.firesafety.utils.TERM_KEY
@@ -50,7 +51,10 @@ class TermsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         viewModel.loadTerms()
+        InsetsHelper.handleTop(false, main_search_toolbar)
+
         bind()
     }
 

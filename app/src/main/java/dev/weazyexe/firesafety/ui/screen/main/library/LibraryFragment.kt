@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.weazyexe.firesafety.R
 import dev.weazyexe.firesafety.domain.Document
+import dev.weazyexe.firesafety.ui.base.CustomTabsHelper
 import dev.weazyexe.firesafety.ui.base.PaginationableAdapter
 import dev.weazyexe.firesafety.utils.extensions.useViewModel
 import kotlinx.android.synthetic.main.fragment_library.*
@@ -91,6 +92,6 @@ class LibraryFragment : Fragment() {
     }
 
     private fun openLink(document: Document) {
-        // TODO
+        CustomTabsHelper.openLink(requireActivity(), document.link)
     }
 }

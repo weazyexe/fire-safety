@@ -1,28 +1,31 @@
 package dev.weazyexe.firesafety.app.data.db
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
 import dev.weazyexe.firesafety.app.data.db.entity.DocumentDbo
-import dev.weazyexe.firesafety.utils.DEFAULT_LIMIT
-import dev.weazyexe.firesafety.utils.DEFAULT_OFFSET
 import io.reactivex.Completable
 import io.reactivex.Observable
 
 @Dao
 interface DocumentDao {
 
-    @Query("SELECT * FROM documents WHERE :query LIKE title ORDER BY id ASC LIMIT :limit OFFSET :offset")
+    @Query("SELECT * FROM documents WHERE title LIKE :query ORDER BY id ASC LIMIT :limit OFFSET :offset")
     fun get(
         query: String,
-        limit: Int = DEFAULT_LIMIT,
-        offset: Int = DEFAULT_OFFSET
+        limit: Int,
+        offset: Int
     ): Observable<List<DocumentDbo>>
+
+    @Query("SELECT count(*) FROM documents")
+    fun getSize(): Observable<Int>
 
     @Query("SELECT * FROM documents WHERE id = :id")
     fun getById(id: Int): DocumentDbo?
 
     @Insert
-    fun insert(document: DocumentDbo): Completable
+    fun insert(document: DocumentDbo)
 
     @Query("DELETE FROM documents")
-    fun deleteTable() : Completable
+    fun deleteTable(): Completable
 }

@@ -16,7 +16,7 @@ import ru.surfstudio.android.easyadapter.pagination.PaginationState
 import javax.inject.Inject
 
 /**
- * ViewModel с логикой получения и хранения списка терминов с пагинацией
+ * [ViewModel] с логикой получения и хранения списка терминов с пагинацией
  */
 class TermsViewModel : ViewModel() {
 

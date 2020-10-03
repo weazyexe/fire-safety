@@ -6,13 +6,11 @@ import dagger.Provides
 import dev.weazyexe.firesafety.app.App
 import dev.weazyexe.firesafety.app.data.db.AppDatabase
 import dev.weazyexe.firesafety.app.data.db.DocumentDao
-import javax.inject.Singleton
 
 @Module
 class DatabaseModule {
 
     @Provides
-    @Singleton
     fun provideDatabase(app: App): AppDatabase =
         Room.databaseBuilder(app, AppDatabase::class.java, "database")
             .fallbackToDestructiveMigration()

@@ -21,7 +21,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0-alpha.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,6 +38,8 @@ dependencies {
     def dagger_version = '2.27'
     def surf_standard_version = '0.5.0-alpha.4'
     def surf_easyadapter_version = '2.0.0'
+    def room_version = '2.2.5'
+    def rxjava3_version = '3.0.0'
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -51,22 +53,28 @@ dependencies {
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
-    implementation 'com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0'
 
     // RxJava3
-    implementation "io.reactivex.rxjava3:rxjava:3.0.0"
-    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation "io.reactivex.rxjava3:rxjava:$rxjava3_version"
+    implementation "io.reactivex.rxjava3:rxandroid:$rxjava3_version"
+    implementation "com.github.akarnokd:rxjava3-retrofit-adapter:$rxjava3_version"
+    implementation "com.github.akarnokd:rxjava3-bridge:$rxjava3_version"
 
     // Firebase
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
 
     // Surf Android Standard
-    implementation "ru.surfstudio.android:datalist-limit-offset:${surf_standard_version}"
-    implementation "ru.surfstudio.android:util-ktx:${surf_standard_version}"
-    implementation "ru.surfstudio.android:easyadapter:${surf_easyadapter_version}"
-    implementation "ru.surfstudio.android:easyadapter-pagination:${surf_easyadapter_version}"
+    implementation "ru.surfstudio.android:datalist-limit-offset:$surf_standard_version"
+    implementation "ru.surfstudio.android:util-ktx:$surf_standard_version"
+    implementation "ru.surfstudio.android:easyadapter:$surf_easyadapter_version"
+    implementation "ru.surfstudio.android:easyadapter-pagination:$surf_easyadapter_version"
 
     // Dagger
     api "com.google.dagger:dagger:${dagger_version}"
     kapt "com.google.dagger:dagger-compiler:${dagger_version}"
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 }

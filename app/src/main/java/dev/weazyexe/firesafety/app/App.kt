@@ -4,6 +4,7 @@ import android.app.Application
 import dev.weazyexe.firesafety.app.di.component.AppComponent
 import dev.weazyexe.firesafety.app.di.component.DaggerAppComponent
 import dev.weazyexe.firesafety.app.di.module.AppModule
+import dev.weazyexe.firesafety.app.di.module.DatabaseModule
 import dev.weazyexe.firesafety.app.di.module.NetworkModule
 
 class App: Application() {
@@ -18,6 +19,7 @@ class App: Application() {
         component = DaggerAppComponent.builder()
             .appModule(AppModule(this))
             .networkModule(NetworkModule())
+            .databaseModule(DatabaseModule())
             .build()
     }
 }

@@ -3,6 +3,9 @@ package dev.weazyexe.firesafety.domain
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * Сущность термина
+ */
 @Parcelize
 data class Term(
     val id: Int,
